@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class RadioServiceTest {
     @Test
-    public void shouldCreate() {
+    public void shouldCreateRadio() {
         RadioService myRadio = new RadioService();
         assertEquals(0, myRadio.getCurrentStation());
         assertEquals(1, myRadio.getCurrentVolume());
