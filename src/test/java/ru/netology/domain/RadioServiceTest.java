@@ -17,7 +17,7 @@ class RadioServiceTest {
         for (int i = 0; i <= 10; i++) {
             myRadio.setCurrentStation(i);
         }
-        int i = -1;
+        int i = -2;
         myRadio.setCurrentStation(i);
         assertEquals(9, myRadio.getCurrentStation());
     }
