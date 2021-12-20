@@ -6,36 +6,37 @@ import org.junit.jupiter.api.Test;
 class RadioServiceTest {
     @Test
     public void shouldCreateRadio() {
-        RadioService myRadio = new RadioService();
+        RadioService myRadio = new RadioService(24);
         assertEquals(0, myRadio.getCurrentStation());
         assertEquals(1, myRadio.getCurrentVolume());
     }
 
     @Test
     public void shouldChangeStation() {
-        RadioService myRadio = new RadioService();
-        for (int i = 0; i <= 10; i++) {
+        int j = 24;
+        RadioService myRadio = new RadioService(j);
+        for (int i = 0; i < j; i++) {
             myRadio.setCurrentStation(i);
         }
         int i = -2;
         myRadio.setCurrentStation(i);
-        assertEquals(9, myRadio.getCurrentStation());
+        assertEquals(23, myRadio.getCurrentStation());
     }
 
     @Test
     public void shouldSetPrevStation() {
-        RadioService myRadio = new RadioService();
+        RadioService myRadio = new RadioService(24);
         myRadio.setCurrentStation(2);
         for (int i = 1; i < 5; i++) {
             myRadio.prevStation();
         }
-        assertEquals(8, myRadio.getCurrentStation());
+        assertEquals(22, myRadio.getCurrentStation());
     }
 
     @Test
     public void shouldSetNextStation() {
-        RadioService myRadio = new RadioService();
-        myRadio.setCurrentStation(8);
+        RadioService myRadio = new RadioService(24);
+        myRadio.setCurrentStation(22);
         for (int i = 1; i < 5; i++) {
             myRadio.nextStation();
 //            assertEquals(i, myRadio.getCurrentStation());
@@ -45,18 +46,18 @@ class RadioServiceTest {
 
     @Test
     public void shouldIncreaseVolume() {
-        RadioService myRadio = new RadioService();
-        for (int i = 0; i < 10; i++) {
+        RadioService myRadio = new RadioService(15);
+        for (int i = 0; i < 100; i++) {
             myRadio.increaseVolume();
         }
-        assertEquals(10, myRadio.getCurrentVolume());
+        assertEquals(100, myRadio.getCurrentVolume());
     }
 
     @Test
     public void shouldLowerVolume() {
-        RadioService myRadio = new RadioService();
-        myRadio.setCurrentVolume(10);
-        for (int i = 10; i >= 0; i--) {
+        RadioService myRadio = new RadioService(15);
+        myRadio.setCurrentVolume(100);
+        for (int i = 100; i >= 0; i--) {
             myRadio.lowerVolume();
         }
         assertEquals(0, myRadio.getCurrentVolume());
@@ -64,7 +65,7 @@ class RadioServiceTest {
 
     @Test
     public void shouldSetVolume() {
-        RadioService myRadio = new RadioService();
+        RadioService myRadio = new RadioService(15);
         myRadio.setCurrentVolume(11);
         myRadio.setCurrentVolume(10);
         myRadio.setCurrentVolume(0);
