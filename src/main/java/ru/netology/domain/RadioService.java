@@ -1,23 +1,19 @@
 package ru.netology.domain;
 
+import jdk.jfr.DataAmount;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+
 public class RadioService {
     private int currentStation = 0;
     private int currentVolume = 1;
     private int quantityOfStation = 10;
 
-    public RadioService(int quantityOfStation) {
-        this.quantityOfStation = quantityOfStation;
-    }
-
-    //    public RadioService() {}
-
-    public int getCurrentStation() {
-        return this.currentStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
 
     public void setCurrentStation(int currentStation) {
         int i = this.quantityOfStation - 1;
