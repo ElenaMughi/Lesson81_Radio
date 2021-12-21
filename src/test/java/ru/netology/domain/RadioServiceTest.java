@@ -10,66 +10,68 @@ class RadioServiceTest {
         assertEquals(0, myRadio.getCurrentStation());
         assertEquals(1, myRadio.getCurrentVolume());
     }
-
     @Test
     public void shouldChangeStation() {
-        int j = 24;
-        RadioService myRadio = new RadioService(j);
-        for (int i = 0; i < j; i++) {
-            myRadio.setCurrentStation(i);
-        }
+        RadioService myRadio = new RadioService( 24);
+        myRadio.setCurrentStation(0);
+        myRadio.setCurrentStation(1);
+        myRadio.setCurrentStation(23);
+        myRadio.setCurrentStation(24);
         int i = -2;
-        myRadio.setCurrentStation(i);
         assertEquals(23, myRadio.getCurrentStation());
     }
 
     @Test
     public void shouldSetPrevStation() {
-        RadioService myRadio = new RadioService(24);
-        myRadio.setCurrentStation(2);
-        for (int i = 1; i < 5; i++) {
-            myRadio.prevStation();
-        }
-        assertEquals(22, myRadio.getCurrentStation());
+        RadioService myRadio = new RadioService( 24);
+        myRadio.setCurrentStation(1);
+        myRadio.prevStation();
+        myRadio.prevStation();
+
+        assertEquals(23, myRadio.getCurrentStation());
     }
 
     @Test
     public void shouldSetNextStation() {
-        RadioService myRadio = new RadioService(24);
-        myRadio.setCurrentStation(22);
-        for (int i = 1; i < 5; i++) {
-            myRadio.nextStation();
-//            assertEquals(i, myRadio.getCurrentStation());
-        }
-        assertEquals(2, myRadio.getCurrentStation());
+        RadioService myRadio = new RadioService( 24);
+        myRadio.setCurrentStation(23);
+        myRadio.nextStation();
+        myRadio.nextStation();
+
+        assertEquals(1, myRadio.getCurrentStation());
     }
 
     @Test
     public void shouldIncreaseVolume() {
-        RadioService myRadio = new RadioService(15);
-        for (int i = 0; i < 100; i++) {
-            myRadio.increaseVolume();
-        }
+        RadioService myRadio = new RadioService(24);
+        myRadio.setCurrentVolume(98);
+        myRadio.increaseVolume();
+        myRadio.increaseVolume();
+        myRadio.increaseVolume();
+
         assertEquals(100, myRadio.getCurrentVolume());
     }
 
     @Test
     public void shouldLowerVolume() {
-        RadioService myRadio = new RadioService(15);
-        myRadio.setCurrentVolume(100);
-        for (int i = 100; i >= 0; i--) {
-            myRadio.lowerVolume();
-        }
+        RadioService myRadio = new RadioService(24);
+        myRadio.setCurrentVolume(2);
+        myRadio.lowerVolume();
+        myRadio.lowerVolume();
+        myRadio.lowerVolume();
+
         assertEquals(0, myRadio.getCurrentVolume());
     }
 
     @Test
     public void shouldSetVolume() {
-        RadioService myRadio = new RadioService(15);
+        RadioService myRadio = new RadioService(24);
         myRadio.setCurrentVolume(11);
         myRadio.setCurrentVolume(10);
         myRadio.setCurrentVolume(0);
         myRadio.setCurrentVolume(-1);
+
         assertEquals(0, myRadio.getCurrentVolume());
     }
+
 }
